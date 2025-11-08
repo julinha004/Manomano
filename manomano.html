@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>manomano – A boneca que fala com a tua criança</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonte Google (opcional) -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: #fffaf6;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; }
+
+    header {
+      background: linear-gradient(135deg, #ff9a9e, #fecf6a);
+      padding: 20px 20px 15px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: #4a1f1f;
+    }
+
+    .nav-links a {
+      margin-left: 20px;
+      font-size: 0.95rem;
+      color: #4a1f1f;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.8;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #ff9a9e, #fecf6a);
+      padding: 40px 20px 60px;
+    }
+
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      gap: 30px;
+    }
+
+    @media (min-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1.3fr 1fr;
+        align-items: center;
+      }
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.7);
+      color: #b5412e;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+      color: #4a1f1f;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      max-width: 500px;
+      margin-bottom: 20px;
+      color: #4a1f1f;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: #ff6f61;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .btn-primary:hover { opacity: 0.92; }
+
+    .btn-ghost {
+      background: rgba(255,255,255,0.4);
+      color: #4a1f1f;
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      margin-top: 10px;
+      color: #4a1f1f;
+      opacity: 0.9;
+    }
+
+    .hero img {
+      max-width: 100%;
+      border-radius: 24px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    section {
+      margin-bottom: 50px;
+      background: #fff;
+      border-radius: 22px;
+      padding: 22px 20px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+      color: #ff6f61;
+    }
+
+    section p { margin-bottom: 10px; }
+
+    .section-subtitle {
+      font-size: 0.9rem;
+      color: #777;
+      margin-bottom: 15px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    @media (min-width: 800px) {
+      .grid-2 { grid-template-columns: 1.2fr 1fr; }
+      .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    }
+
+    .card {
+      background: #fffaf2;
+      border-radius: 18px;
+      padding: 16px 14px;
+      font-size: 0.95rem;
+    }
+
+    .card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+    }
+
+    ul {
+      padding-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    ul li { margin-bottom: 6px; }
+
+    .download-section {
+      text-align: center;
+      background: #fff0e0;
+      border: 1px dashed #ffb38a;
+    }
+
+    .download-section p {
+      margin-bottom: 14px;
+    }
+
+    .download-note {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #777;
+      padding: 15px 10px 25px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <div class="nav-container">
+      <div class="logo">manomano 🧸</div>
+      <nav class="nav-links">
+        <a href="#sobre">Sobre</a>
+        <a href="#beneficios">Benefícios</a>
+        <a href="#pais">Para os pais</a>
+        <a href="#download">Baixar PDF</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">Nova amiga das crianças</span>
+        <h1>A boneca que fala e faz a criança sentir-se acompanhada.</h1>
+        <p>
+          A <strong>manomano</strong> conversa todos os dias com a criança, ajuda a organizar
+          emoções e a transformar momentos de solidão em companhia, sempre com supervisão de um adulto.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#download" class="btn-primary">📄 Baixar guia em PDF</a>
+          <a href="#sobre" class="btn-ghost">Saiba mais sobre a manomano</a>
+        </div>
+
+        <p class="hero-note">
+          Ideal para rotinas de “como foi o teu dia?”, antes de dormir ou depois da escola.
+        </p>
+      </div>
+
+      <div>
+        <!-- Troca "manomano.jpg" pela imagem real da boneca -->
+        <img src="manomano.jpg" alt="Boneca manomano a sorrir">
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <!-- SOBRE -->
+    <section id="sobre">
+      <h2>O que é a manomano?</h2>
+      <p class="section-subtitle">
+        Uma boneca que fala, criada para ser companhia e estímulo emocional no dia a dia da criança.
+      </p>
+      <div class="grid grid-2">
+        <div>
+          <p>
+            A <strong>manomano</strong> é uma boneca interativa pensada para conversar com a criança
+            de forma simples, carinhosa e apropriada à idade. Ela faz perguntas, incentiva a criança
+            a falar sobre o dia e traz frases de conforto e incentivo.
+          </p>
+          <p>
+            Mais do que um brinquedo, a manomano é um recurso lúdico para apoiar famílias que querem
+            estimular o diálogo e a expressão de sentimentos de uma forma leve e segura.
+          </p>
+        </div>
+        <div>
+          <p><strong>Exemplos de frases da manomano:</strong></p>
+          <ul>
+            <li>“Oi, como foi o teu dia hoje?”</li>
+            <li>“Queres contar-me algo que te deixou feliz?”</li>
+            <li>“Às vezes também podemos ficar tristes, e está tudo bem falar sobre isso.”</li>
+            <li>“Obrigada por conversares comigo, adoro ser tua amiga.”</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFÍCIOS -->
+    <section id="beneficios">
+      <h2>Por que a manomano é especial?</h2>
+      <p class="section-subtitle">
+        Pequenos momentos de conversa que podem fazer uma grande diferença no dia da criança.
+      </p>
+      <div class="grid grid-3">
+        <div class="card">
+          <strong>🧸 Companhia diária</strong>
+          A criança sente que tem sempre alguém para ouvir, mesmo nos momentos em que os adultos
+          estão ocupados por instantes.
+        </div>
+        <div class="card">
+          <strong>🗣️ Estímulo à comunicação</strong>
+          Ajuda a criança a colocar em palavras aquilo que sente, reforçando vocabulário e expressão emocional.
+        </div>
+        <div class="card">
+          <strong>🌙 Rotina mais tranquila</strong>
+          Pode fazer parte de rituais antes de dormir ou após a escola, ajudando a criança a “descarregar o dia”.
+        </div>
+      </div>
+      <p style="font-size:0.8rem; color:#777; margin-top: 14px;">
+        A manomano é um complemento lúdico e não substitui o contacto humano, o cuidado familiar
+        nem acompanhamento profissional quando necessário.
+      </p>
+    </section>
+
+    <!-- PARA OS PAIS -->
+    <section id="pais">
+      <h2>Uma ferramenta para famílias e cuidadores</h2>
+      <p class="section-subtitle">
+        Simples de integrar no dia a dia e pensada para ser usada sempre com a proximidade dos adultos.
+      </p>
+      <div class="grid grid-2">
+        <div>
+          <ul>
+            <li>Indicada para crianças que gostam de brincar de “conversar” com bonecas ou peluches.</li>
+            <li>Pode ajudar em fases em que a criança se sente mais sozinha ou insegura.</li>
+            <li>Serve como ponte para conversas mais profundas entre criança e adulto.</li>
+            <li>Conteúdo de falas pensado para ser gentil, respeitoso e amigável.</li>
+          </ul>
+        </div>
+        <div>
+          <p><strong>Como os adultos podem usar a manomano:</strong></p>
+          <ul>
+            <li>Estar perto nas primeiras interações, observando as respostas da criança.</li>
+            <li>Retomar temas que surgem na conversa com a boneca (“Ouvi a manomano perguntar…”).</li>
+            <li>Ajustar o tempo de uso para não substituir outras brincadeiras ou contactos sociais.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD PDF -->
+    <section id="download" class="download-section">
+      <h2>📄 Baixe o guia da manomano em PDF</h2>
+      <p>
+        Preparamos um pequeno guia para pais, mães e cuidadores, com mais informações sobre a manomano,
+        sugestões de utilização no dia a dia e exemplos de diálogos que podem ser feitos com a criança.
+      </p>
+      <!-- TROCA "manomano-guia.pdf" PELO NOME REAL DO TEU PDF -->
+      <p style="margin-top: 10px; margin-bottom: 18px;">
+        <a class="btn-primary" href="manomano-guia.pdf" download>
+          👉 Baixar guia da manomano (PDF)
+        </a>
+      </p>
+      <p class="download-note">
+        Podes partilhar este PDF com outros pais, educadores e profissionais que trabalhem com crianças.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    manomano &copy; 2025 – Boneca interativa para crianças. Utilize sempre com supervisão de um adulto.
+  </footer>
+
+</body>
+</html>
